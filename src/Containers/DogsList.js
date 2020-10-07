@@ -5,11 +5,18 @@ import DogCard from '../Components/DogCard'
 class DogList extends Component {
 
   handleCards(){
-    return apiResponse.map((dog, index) => <DogCard key={index} data={dog}/>)
+    return apiResponse.map((dog, index) => <DogCard key={index} data={dog} appFavoriter={this.props.appFavoriter} liked={false}/>)
   }
 
   render() {
-    return <div className="list">{this.handleCards()}</div>;
+    return (
+      <React.Fragment>
+        <div className="list">
+          <h1>List of Dogs</h1>
+          {this.handleCards()}
+          </div>
+      </React.Fragment>
+    )
   }
 }
 

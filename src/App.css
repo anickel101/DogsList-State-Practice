@@ -1,6 +1,6 @@
 html{
   margin: 0;
-  background-image: url('https://www.blendswap.com/blend_previews/3497/0/0?u=2019-07-17%2016:48:52');
+  /* background-image: url('https://www.blendswap.com/blend_previews/3497/0/0?u=2019-07-17%2016:48:52'); */
   background-position: left;
   background-size: cover;
   background-repeat: no-repeat;
@@ -13,7 +13,7 @@ html{
 
 .app{
   display: flex;
-  width: 50%;
+  width: 100%;
 }
 
 .list{

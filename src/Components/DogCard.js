@@ -1,39 +1,31 @@
 import React from "react";
 
 class DogCard extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      barking: false
+
+  state={
+    liked: this.props.liked
+  }
+
+  liker = () => {
+    this.props.appFavoriter(this.props.data)
+  }
+
+  addButton = () => {
+    if (!this.state.liked) {
+      return <button onClick={this.liker}>Favorite</button>
+    } else {
+      return <button onClick={this.liker}>Unfavorite</button>
     }
   }
-
-  clickHandler = () => {
-    this.setState(previousState => {
-      return {
-        barking: !previousState.barking
-      }
-    })
-  }
-
-  bark = () => {
-    if(this.state.barking) {
-      return <h2>Bark</h2>
-    }
-  }
-
 
   render() {
     return (
       <div className="card">
-        <span className="content">
+        <div className="content">
           <h2 >{this.props.data.name}</h2>
           <img alt="" src={this.props.data.img} />
-        </span>
-        <span className="bark">
-          <button onClick={this.clickHandler}>Bark</button>
-        </span>
-        {this.bark()}
+          {this.addButton()}
+        </div>
       </div>
     );
   }
