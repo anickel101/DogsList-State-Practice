@@ -5,7 +5,14 @@ import DogCard from '../Components/DogCard'
 class DogList extends Component {
 
   handleCards(){
-    return this.props.dogs.map((dog, index) => <DogCard key={index} data={dog} appFavoriter={this.props.appFavoriter} liked={false}/>)
+    console.log("Filterd Dogs: ", this.props.filteredDogs)
+    console.log("Unfiltered Dogs: ",this.props.dogs)
+    if (this.props.filteredDogs.length === 0) {
+      return this.props.dogs.map((dog, index) => <DogCard key={index} data={dog} appFavoriter={this.props.appFavoriter} liked={false}/>)
+    } else {
+      return this.props.filteredDogs.map((dog, index) => <DogCard key={index} data={dog} appFavoriter={this.props.appFavoriter} liked={false}/>)
+    }
+
   }
 
   render() {

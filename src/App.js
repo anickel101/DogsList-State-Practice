@@ -10,11 +10,17 @@ class App extends Component {
 
   state={
     dogs: apiResponse,
-    favorites: []
+    favorites: [],
+    filtered: []
   }
 
-  search = () => {
-    console.log("IN APP SEARCH")
+  search = (name) => {
+    let searchedDogs = this.state.dogs.filter(function (checkDog) {
+      return checkDog.name === name
+    })
+    this.setState({
+      filtered: searchedDogs
+    })
   }
 
   addDog = (dogData) => {
@@ -56,7 +62,7 @@ class App extends Component {
           <div className="search-form">
             <SearchForm search={this.search}/>
           </div>
-          <DogsList dogs={this.state.dogs} appFavoriter={this.appFavoriter}/>
+          <DogsList dogs={this.state.dogs} filteredDogs={this.state.filtered} appFavoriter={this.appFavoriter}/>
           <DogFavorites favorites={this.state.favorites} appFavoriter={this.appFavoriter}/>
         </div>
       </React.Fragment>

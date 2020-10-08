@@ -15,9 +15,6 @@ class SearchForm extends React.Component {
     submitHandler = (event) => {
         event.preventDefault();
         this.props.search(this.state.searchName)
-        this.setState({
-            searchName: ""
-        })
     }
 
     render() {
@@ -28,7 +25,7 @@ class SearchForm extends React.Component {
                     <label>Name:
                         <input
                             type="text"
-                            name="name"
+                            name="searchName"
                             id="name"
                             value={this.state.searchName}
                             onChange={this.changeHandler} />
