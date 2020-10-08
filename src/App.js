@@ -13,10 +13,16 @@ class App extends Component {
     favorites: []
   }
 
+  search = () => {
+    console.log("IN APP SEARCH")
+  }
+
   addDog = (dogData) => {
     dogData.id = this.getNextAvailableId();
-    this.setState({
-      dogs: [...apiResponse, dogData]
+    this.setState(prevState => {
+      return {
+        dogs: [...prevState.dogs, dogData]
+      }
     })
   }
 
@@ -48,7 +54,7 @@ class App extends Component {
             <CreateForm addDog={this.addDog}/>
           </div>
           <div className="search-form">
-            <SearchForm />
+            <SearchForm search={this.search}/>
           </div>
           <DogsList dogs={this.state.dogs} appFavoriter={this.appFavoriter}/>
           <DogFavorites favorites={this.state.favorites} appFavoriter={this.appFavoriter}/>
