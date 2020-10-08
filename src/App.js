@@ -13,6 +13,18 @@ class App extends Component {
     favorites: []
   }
 
+  addDog = (dogData) => {
+    dogData.id = this.getNextAvailableId();
+    this.setState({
+      dogs: [...apiResponse, dogData]
+    })
+  }
+
+  getNextAvailableId = () => {
+    let currentMaxId = this.state.dogs.reduce((a, b) => a.id > b.id ? a.id : b.id);
+    return currentMaxId + 1
+  }
+
 
   appFavoriter = (dog) => {
     if(!this.state.favorites.includes(dog)) {
@@ -33,7 +45,7 @@ class App extends Component {
       <React.Fragment>
         <div className="app">
           <div className="create-form">
-            <CreateForm />
+            <CreateForm addDog={this.addDog}/>
           </div>
           <div className="search-form">
             <SearchForm />
