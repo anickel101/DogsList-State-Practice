@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import "./App.css";
 import DogsList from "./Containers/DogsList"
 import DogFavorites from "./Containers/DogFavorites"
+import CreateForm from "./Components/CreateForm"
+import SearchForm from "./Components/SearchForm"
+import {apiResponse} from './api.js'
 
 class App extends Component {
 
   state={
+    dogs: apiResponse,
     favorites: []
   }
 
@@ -26,10 +30,18 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app">
-        <DogsList appFavoriter={this.appFavoriter}/>
-        <DogFavorites favorites={this.state.favorites} appFavoriter={this.appFavoriter}/>
-      </div>
+      <React.Fragment>
+        <div className="app">
+          <div className="create-form">
+            <CreateForm />
+          </div>
+          <div className="search-form">
+            <SearchForm />
+          </div>
+          <DogsList dogs={this.state.dogs} appFavoriter={this.appFavoriter}/>
+          <DogFavorites favorites={this.state.favorites} appFavoriter={this.appFavoriter}/>
+        </div>
+      </React.Fragment>
     );
   }
 }

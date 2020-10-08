@@ -5,7 +5,7 @@ import DogCard from '../Components/DogCard'
 class DogList extends Component {
 
   handleCards(){
-    return apiResponse.map((dog, index) => <DogCard key={index} data={dog} appFavoriter={this.props.appFavoriter} liked={false}/>)
+    return this.props.dogs.map((dog, index) => <DogCard key={index} data={dog} appFavoriter={this.props.appFavoriter} liked={false}/>)
   }
 
   render() {

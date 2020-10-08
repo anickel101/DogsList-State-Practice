@@ -11,7 +11,7 @@ class DogFavorites extends Component {
   render() {
     return (
         <React.Fragment>
-          <div className="list">
+          <div className="favorites">
             <h1>List of Favorites</h1>
             {this.handleCards()}
             </div>
