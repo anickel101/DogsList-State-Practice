@@ -5,8 +5,6 @@ import DogCard from '../Components/DogCard'
 class DogList extends Component {
 
   handleCards(){
-    console.log("Filterd Dogs: ", this.props.filteredDogs)
-    console.log("Unfiltered Dogs: ",this.props.dogs)
     if (this.props.filteredDogs.length === 0) {
       return this.props.dogs.map((dog, index) => <DogCard key={index} data={dog} appFavoriter={this.props.appFavoriter} liked={false}/>)
     } else {
